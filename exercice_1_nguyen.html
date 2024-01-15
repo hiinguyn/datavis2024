@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercice 01 - wikidata et rawgraphs</title>
+</head>
+<body>
+    <h1>Exercice no. 01</h1>
+    <h2>Ligne de temps faite avec Wikidata</h2>
+    <p>Cette <em>timeline</em> montre des footballeurs français qui jouent en Premier League (Anglettere).</p>
+    <p>La requête est :</p>
+    <p>
+        <code>
+            <pre>
+                #defaultView:Timeline
+                SELECT ?UEFA_Champions_League ?UEFA_Champions_LeagueLabel ?date_of_birth ?place_of_birth ?place_of_birthLabel ?image WHERE {
+                SERVICE wikibase:label { bd:serviceParam wikibase:language "[AUTO_LANGUAGE],en". }
+                ?UEFA_Champions_League wdt:P118 wd:Q9448.
+                ?UEFA_Champions_League wdt:P103 wd:Q150.
+                OPTIONAL { ?UEFA_Champions_League wdt:P569 ?date_of_birth. }
+                OPTIONAL { ?UEFA_Champions_League wdt:P19 ?place_of_birth. }
+                ?UEFA_Champions_League wdt:P18 ?image. 
+                }
+                LIMIT 100
+            </pre>
+        </code>
+    </p>
+    <iframe style="width: 80vw; height: 50vh; border: none;" src="https://query.wikidata.org/embed.html#%23defaultView%3ATimeline%0ASELECT%20%3FUEFA_Champions_League%20%3FUEFA_Champions_LeagueLabel%20%3Fdate_of_birth%20%3Fplace_of_birth%20%3Fplace_of_birthLabel%20%3Fimage%20WHERE%20%7B%0A%20%20SERVICE%20wikibase%3Alabel%20%7B%20bd%3AserviceParam%20wikibase%3Alanguage%20%22%5BAUTO_LANGUAGE%5D%2Cen%22.%20%7D%0A%20%20%0A%20%20%0A%20%20%0A%20%20%3FUEFA_Champions_League%20wdt%3AP118%20wd%3AQ9448.%0A%20%20%3FUEFA_Champions_League%20wdt%3AP103%20wd%3AQ150.%0A%20%20OPTIONAL%20%7B%20%3FUEFA_Champions_League%20wdt%3AP569%20%3Fdate_of_birth.%20%7D%0A%20%20OPTIONAL%20%7B%20%3FUEFA_Champions_League%20wdt%3AP19%20%3Fplace_of_birth.%20%7D%0A%20%20%3FUEFA_Champions_League%20wdt%3AP18%20%3Fimage.%20%0A%7D%0ALIMIT%20100" referrerpolicy="origin" sandbox="allow-scripts allow-same-origin allow-popups"></iframe>
+
+    <hr>
+
+    <h2>Circle packing fait avec RAWGraphs</h2>
+
+    <p>Cette représentation</p>
+
+    <div>
+        <a href="data_visualization.svg"><img src="data_visualization.svg" alt="Circle Packing" width="500"></a>
+    </div>
+
+    <p>Code de la requête en SPARQL Wikidata :</p>
+    <p>
+        <code>
+            <pre>
+                #defaultView:Timeline
+                SELECT ?UEFA_Champions_League ?UEFA_Champions_LeagueLabel ?date_of_birth ?place_of_birth ?place_of_birthLabel ?image WHERE {
+                SERVICE wikibase:label { bd:serviceParam wikibase:language "[AUTO_LANGUAGE],en". }
+                ?UEFA_Champions_League wdt:P118 wd:Q9448.
+                ?UEFA_Champions_League wdt:P103 wd:Q150.
+                OPTIONAL { ?UEFA_Champions_League wdt:P569 ?date_of_birth. }
+                OPTIONAL { ?UEFA_Champions_League wdt:P19 ?place_of_birth. }
+                ?UEFA_Champions_League wdt:P18 ?image. 
+                }
+                LIMIT 100
+            </pre>
+        </code>
+    </p>
+
+    <p>Lien de la requête : <a href="https://w.wiki/8qzm">https://w.wiki/8qzm</a></p>
+
+</body>
+</html>
